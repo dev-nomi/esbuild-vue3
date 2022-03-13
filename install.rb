@@ -12,3 +12,13 @@ else
   run %(npm set-script build "#{build_script}")
   run %(yarn build)
 end
+
+copy_file "#{__dir__}/main.js", "app/javascript/main.js"
+
+inject_into_file "app/javascript/application.js", "\nimport initVueApp from './main.js'\ninitVueApp()\n"
+
+empty_directory "app/javascript/components"
+copy_file "#{__dir__}/components/app.vue", "app/javascript/components/app.vue"
+
+
+say "Note: Restart your rails server", :bold
