@@ -1,0 +1,1 @@
+say "Template for config vue in rails 7 using esbuild"
